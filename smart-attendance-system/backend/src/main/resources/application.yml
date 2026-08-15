@@ -1,19 +1,19 @@
 server:
-  port: 9630
+  port: ${PORT:9630}
 
 spring:
   application:
     name: smart-attendance-backend
 
   datasource:
-    url: jdbc:mysql://localhost:3306/smart_attendance_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: root
-    password: Sonu@9630
+    url: jdbc:mysql://mysql-2da9f0d6-smartattendancedb.e.aivencloud.com:28592/smart_attendance_db?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: avnadmin
+    password: AVNS_8ddADGpPpVqAw2Fj-9k
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update       # auto-creates/updates tables based on entities
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
@@ -21,13 +21,13 @@ spring:
 
   servlet:
     multipart:
-      max-file-size: 200MB      # per individual video/image file
-      max-request-size: 500MB   # total request size (raised to allow up to 3 videos at once)
+      max-file-size: 200MB
+      max-request-size: 500MB
 
 # JWT Config
 jwt:
-  secret: ChangeThisToALongRandomSecretKeyForProductionUse123456789
-  expiration-ms: 86400000     # 24 hours
+  secret: koi_bhi_lambi_random_string_yaha_daalo123456
+  expiration-ms: 86400000
 
 # Python AI Service URL
 ai-service:
