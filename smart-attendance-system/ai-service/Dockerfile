@@ -3,8 +3,6 @@ FROM python:3.11-slim
 WORKDIR /app
 
 RUN apt-get update && apt-get install -y \
-    cmake \
-    build-essential \
     libopenblas-dev \
     liblapack-dev \
     libx11-dev \
@@ -15,9 +13,6 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir --upgrade pip
-
-ENV CMAKE_ARGS="-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
-
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
