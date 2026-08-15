@@ -1,7 +1,10 @@
 import axios from "axios";
 
+// In deployment, set REACT_APP_API_URL as an environment variable
+// (e.g. https://your-backend.onrender.com/api) in Vercel's project settings.
+// Locally, it falls back to your dev backend on port 9630.
 const api = axios.create({
-  baseURL: "http://localhost:9630/api",
+  baseURL: process.env.REACT_APP_API_URL || "http://localhost:9630/api",
 });
 
 // Attach JWT token to every request automatically
