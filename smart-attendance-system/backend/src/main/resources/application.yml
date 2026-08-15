@@ -6,9 +6,9 @@ spring:
     name: smart-attendance-backend
 
   datasource:
-    url: jdbc:mysql://mysql-2da9f0d6-smartattendancedb.e.aivencloud.com:28592/smart_attendance_db?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true
-    username: avnadmin
-    password: AVNS_8ddADGpPpVqAw2Fj-9k
+    url: ${DATABASE_URL:jdbc:mysql://mysql-2da9f0d6-smartattendancedb.e.aivencloud.com:28592/smart_attendance_db?useSSL=true&serverTimezone=UTC&allowPublicKeyRetrieval=true}
+    username: ${DATABASE_USERNAME:avnadmin}
+    password: ${DATABASE_PASSWORD:AVNS_8ddADGpPpVqAw2Fj-9k}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -26,13 +26,17 @@ spring:
 
 # JWT Config
 jwt:
-  secret: koi_bhi_lambi_random_string_yaha_daalo123456
+  secret: ${JWT_SECRET:koi_bhi_lambi_random_string_yaha_daalo123456}
   expiration-ms: 86400000
 
 # Python AI Service URL
 ai-service:
-  base-url: http://localhost:8000
+  base-url: ${AI_SERVICE_URL:http://localhost:8000}
 
 # File storage paths
 file:
   upload-dir: ./uploads
+
+# Allowed frontend origin for CORS
+frontend:
+  origin: ${FRONTEND_ORIGIN:http://localhost:3000}
